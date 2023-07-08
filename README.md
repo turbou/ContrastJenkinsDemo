@@ -38,7 +38,7 @@ http://localhost:9000/jenkins/configure にアクセス
 - Contrast API Key, Contrast Service Key, Organization ID
   あなたのアカウントから取得してください。
 - Contrast URL
-  https://eval.contrastsecurity.com/Contrast/api のように末尾に/apiが必要です。
+  https://eval.contrastsecurity.com/Contrast/api のように**末尾に/apiが必要**です。
 - Result of a vulnerable build
   FAILURE
 - チェックボックス２つは両方ともオンにする。
