@@ -9,5 +9,5 @@ ws-cleanup:0.37
 pipeline-stage-view:2.11
 ldap:1.20
 matrix-auth:2.4.2
-contrast-continuous-application-security:3.1.1
+contrast-continuous-application-security:3.10
 

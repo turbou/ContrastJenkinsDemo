@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.387.3
+FROM jenkins/jenkins:2.387.3-jdk11
 USER root
 RUN apt-get update
 RUN apt-get install -y telnet
