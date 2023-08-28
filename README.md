@@ -9,8 +9,8 @@ DockerでJenkinsとSeleniumを稼働させます。
 ### プロジェクトの取得と起動
 
 ```bash
-git clone https://github.com/turbou/ContrastSecurity.git
-cd ContrastSecurity/integration/jenkins/petclinic_selenium_demo/
+git clone https://github.com/turbou/ContrastJenkisDemo.git
+cd ContrastJenkisDemo/
 docker-compose build --no-cache
 docker-compose up -d
 ```
@@ -27,7 +27,7 @@ docker exec -it petclinic_demo.jenkins cat /var/jenkins_home/secrets/initialAdmi
 
 ### ContrastのJenkinsプラグインのセットアップ
 
-http://localhost:9000/jenkins/configure にアクセス
+http://localhost:9000/jenkins/configure にアクセス(Jenkins ダッシュボード > Jenkinsの管理 > システムの設定)
 
 **Contrast Connections** の項目を設定して、Test Contrast Connectionを実行して疎通確認。
 
@@ -49,7 +49,7 @@ Test Contrast Connectionを実行して、Successfully connected to Contrast. �
 
 ### エージェントの準備とセットアップ
 
-./petclinic_selenium_demo/contrast下にcontrast.jarをDL
+./contrast下にcontrast.jarをDL
 
 yamlのDLは任意です。yamlを使用する場合は適宜、./petclinic/startup.sh を弄ってください。
 
@@ -73,16 +73,16 @@ java -javaagent:/tmp/contrast/contrast.jar \
 -jar /tmp/petclinic/spring-petclinic-1.5.1.jar --server.port=8001
 ```
 
-変更すべきところは以下２点です。
+変更すべきところは以下です。
 
-- contrast.agent.java.standalone_app_name
-  アプリケーション名を任意のものに設定してください。
-  **Jenkinsのジョブにもアプリケーション名を設定する箇所があるので、そちらも修正してください。**
-- contrast.server.name
-  適当な名前に設定してください。
+- -Dcontrast.agent.java.standalone_app_name
+
+  デフォルトではPetClinic_8001としていますが、適当な名前に設定し直すこともできます。また、**こちらの値はJenkinsのジョブ設定：アプリケーション名に入力・保存が必要です。**(http://localhost:9000/jenkins/job/PetClinic_Selenium/configure より「ビルド後の処理」> Contrast Assess > Application Vulnerability Security Controls > Applications > Application Nameを設定)
 
 任意変更箇所は以下です。
 
+- -Dcontrast.server.name
+  デフォルトではMacbookProとしていますが、適当な名前に設定し直すこともできます。
 - --server.port
   デフォルトでは8001としています。変更する場合は**docker-compose.ymlのports**も合わせて
   修正してください。
@@ -109,7 +109,7 @@ Finderで、CMD+Kで、vnc://localhost:5900に接続。パスワードは secret
 
 をchromeに入れます。
 
-あとは普通に立ち上げたPetClinicに対して、通常の操作を行い実行を記録します。
+あとはテストシナリオ用として別途立ち上げたPetClinicに対して、通常の操作を行い実行を記録します。
 
 そのまま保存すると.slide拡張子のファイルになりますが、テストの３点リーダをクリックしてExportを選択します。
 
