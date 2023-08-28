@@ -76,8 +76,7 @@ java -javaagent:/tmp/contrast/contrast.jar \
 変更すべきところは以下です。
 
 - -Dcontrast.agent.java.standalone_app_name
-
-  デフォルトではPetClinic_8001としていますが、適当な名前に設定し直すこともできます。また、**こちらの値はJenkinsのジョブ設定：アプリケーション名に入力・保存が必要です。**(http://localhost:9000/jenkins/job/PetClinic_Selenium/configure より「ビルド後の処理」> Contrast Assess > Application Vulnerability Security Controls > Applications > Application Nameを設定)
+  デフォルトではPetClinic_8001としていますが、適当な名前に設定し直すこともできます。また、**こちらの値はJenkinsのジョブ設定：アプリケーション名に入力・保存が必要です。**(http://localhost:9000/jenkins/job/PetClinic_Selenium/configure より「ビルド後の処理」> Contrast Assess > Application Vulnerability Security Controls > Applications > Application Name)
 
 任意変更箇所は以下です。
 
